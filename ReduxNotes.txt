@@ -1,0 +1,16 @@
+JSONPlaceholder api - fake json api
+  https://jsonplaceholder.typicode.com/
+
+https://www.youtube.com/watch?v=93p3LxR9xfM
+
+Create-react-app
+  Create Posts.js
+    componentWillMount(); method
+
+    use map() method to get posts to display
+
+    Create a ugly form.
+
+    do a bunch of stuff
+
+Implement redux
