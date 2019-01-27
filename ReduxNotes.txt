@@ -14,3 +14,4 @@ Create-react-app
     do a bunch of stuff
 
 Implement redux
+  npm install redux react-redux redux-thunk
