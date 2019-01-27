@@ -1,39 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createPosts } from '../actions/postActions';
 
-export default class Postform extends Component {
-constructor(props) {
-  super(props);
-  this.state ={
-    title: '',
-    body: ''
-  };
-  
-  this.onChange = this.onChange.bind(this);
-  this.onSubmit = this.onSubmit.bind(this);
-}
-
-onChange(e) {
-  this.setState({ [e.target.name]: e.target.value });
-}
-
-onSubmit(e) {
-  e.preventDefault();
-
-  const post = {
-    title: this.state.title,
-    body: this.state.body
+class Postform extends Component {
+  constructor(props) {
+    super(props);
+    this.state ={
+      title: '',
+      body: ''
+    };
+    
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  fetch('https://jsonplaceholder.typicode.com/posts', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify(post)
-  })
-    .then(res => res.json())
-    .then(data => console.log(data));
-}
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+
+    const post = {
+      title: this.state.title,
+      body: this.state.body
+    }
+
+    this.props.createPost(post);
+  }
 
   render() {
     return (
@@ -55,3 +50,9 @@ onSubmit(e) {
     )
   }
 }
+
+PostForm.propTypes = {
+  createPost: PropTypes.func.isRequired
+};
+
+export default connect(null, { createPosts })(PostForm);
